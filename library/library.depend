@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1712253585 source:c:\users\40774\documents\library\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"file_operations.h"
+	"menu.h"
+	"search_books.h"
+	"return_books.h"
+	"donate_books.h"
+	"borrow_books.h"
+	"loans.h"
+
+1712249027 c:\users\40774\documents\library\file_operations.h
+
+1712249172 c:\users\40774\documents\library\menu.h
+
+1712249341 c:\users\40774\documents\library\search_books.h
+
+1712252191 c:\users\40774\documents\library\return_books.h
+
+1712252048 c:\users\40774\documents\library\donate_books.h
+
+1712253317 c:\users\40774\documents\library\borrow_books.h
+
+1712253552 c:\users\40774\documents\library\loans.h
+

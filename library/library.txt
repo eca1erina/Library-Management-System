@@ -1,0 +1,11 @@
+Animal Farm,George Orwell,18
+1984,George Orwell,99
+The Metamorphosis,Franz Kafka,7
+A Treatise of Painting,Leonardo da Vinci,1
+The Book of Tea,Okakura Kakuzo,6
+The Castle,Franz Kafka,8
+Demons,Fyodor Dostoevsky,43
+Crime and Punishment,Fyodor Dostoevsky,88
+Faust,Johann Wolfgang von Goethe,34
+The Sorrows of Young Werther,Johann Wolfgang von Goethe,7
+Sketches by Boz,Charles Dickens,6
