@@ -4,12 +4,14 @@
 void Donate(book *books, int nr_books)
 {
     system("cls");
+
     int nr_donated;
-    book *donated = malloc(sizeof(book)*100);
 
     printf("\n\tHow many books would you like to donate?\n\n\t");
     scanf("%d", &nr_donated);
     printf("\n\tType in the title, the author and the number of copies of each book you'd like to donate, all separated by a newline:\n\n\t");
+
+    book *donated = malloc(sizeof(book)*nr_donated);
 
     for (int i=0; i<nr_donated; i++) {
         scanf(" %[^\n]s", donated[i].title);
@@ -36,7 +38,9 @@ void Donate(book *books, int nr_books)
         }
     }
 
-    Write_to_file(books, nr_books, "library.txt");
+    Write_to_file(books, nr_books, "library.csv");
+
+    free(donated);
 }
 
 #endif // DONATE_BOOKS_H_INCLUDED

@@ -7,6 +7,14 @@ typedef struct book {
     int copies;
 } book;
 
+int is_word(char s[])
+{
+    for (int i=0; i<strlen(s); i++) {
+        if (isalpha(s[i]) == 0) return 0;
+    }
+    return 1;
+}
+
 int exists(char fname[])
 {
     FILE *file;
@@ -78,6 +86,31 @@ void Append_to_file(book *books, int nr_books, char file_name[])
 
     for (int i=0; i<nr_books; i++) {
         fprintf(file, "%s,%s,%d\n",
+                books[i].title,
+                books[i].author,
+                books[i].copies);
+    }
+
+    fclose(file);
+}
+
+void Write_to_history_file(book *books, int nr_books, char username[])
+{
+    FILE* file = fopen("history.csv", "a+");
+
+    if (!file) {
+        printf("Can't open file\n");
+    }
+
+    char user[50] = "";
+
+    for (int i=0; i<strlen(username)-4; i++) {
+        user[i] = username[i];
+    }
+
+    for (int i=0; i<nr_books; i++) {
+        fprintf(file, "%s,%s,%s,%d\n",
+                user,
                 books[i].title,
                 books[i].author,
                 books[i].copies);

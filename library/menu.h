@@ -1,31 +1,14 @@
 #ifndef MENU_H_INCLUDED
 #define MENU_H_INCLUDED
 
-void Mov(void){
-printf("\033[0;35m");
-}
-void Tur(void){
-printf("\033[0;36m");
-}
-void Rosu(void)
-{
-    printf("\033[0;31m");
-}
-void Alb(void)
+void White(void)
 {
     printf("\033[0m");
 }
-void Galben(void)
+
+void Yellow(void)
 {
     printf("\033[0;33m");
-}
-void Blue(void)
-{
-    printf("\033[0;34m");
-}
-void Verde(void)
-{
-    printf("\033[0;32m");
 }
 
 void Menu(void)
@@ -40,9 +23,9 @@ void Menu(void)
     printf("\t4. View my loans\n");
     printf("\t5. Search books\n");
     printf("\n");
-    Galben();
+    Yellow();
     printf("\t0. Exit\n\n\t");
-    Alb();
+    White();
 }
 
 #endif // MENU_H_INCLUDED
