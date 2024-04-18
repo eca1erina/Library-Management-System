@@ -10,7 +10,7 @@ typedef struct book {
 int is_word(char s[])
 {
     for (int i=0; i<strlen(s); i++) {
-        if (isalpha(s[i]) == 0) return 0;
+        if (isalpha(s[i]) == 0 && s[i] != ' ') return 0;
     }
     return 1;
 }

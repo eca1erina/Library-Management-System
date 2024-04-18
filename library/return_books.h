@@ -5,10 +5,27 @@ void Return(book *books, int nr_books, char user[])
 {
     system("cls");
 
-    int nr_returned;
+    int nr_returned, n;
+    char nr[10];
 
     printf("\n\tHow many books would you like to return?\n\n\t");
-    scanf("%d", &nr_returned);
+    scanf("%s", &nr);
+
+    if (is_word(nr)) {
+        printf("\n\tError. The number of books must be an integer! Please try again.\n");
+        Yellow();
+        printf("\n\tPress 0 to go back to the menu.\n\n\t");
+        scanf("%d", &n);
+        White();
+    }
+    else {
+        for (int i=0; i<strlen(nr); i++) {
+            int j = nr[i] - '0';
+            nr_returned = nr_returned*10 + j;
+        }
+    }
+
+    if (nr_returned == 0) return;
     printf("\n\tType in the title, the author and the number of copies of each book you'd like to return, all separated by a newline:\n\n\t");
 
     book *returned = malloc(sizeof(book)*nr_returned);
@@ -22,7 +39,7 @@ void Return(book *books, int nr_books, char user[])
         printf("\t");
     }
 
-    int nr_loans, n;
+    int nr_loans;
     book *loans = malloc(sizeof(book)*100);
     nr_loans = Read_from_file(loans, user);
 

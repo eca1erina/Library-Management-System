@@ -24,8 +24,7 @@ int main()
 
     while(cont != 0)
     {
-        printf("\t1. Log in\n");
-        printf("\t2. Search books\n\n");
+        printf("\n\t1. Log in\n\n");
         Yellow();
         printf("\t0. Exit\n\n\t");
         White();
@@ -44,7 +43,7 @@ int main()
                     scanf("%s", &first);
                     scanf("%s", &last);
                     if (is_word(first) == 0 || is_word(last) == 0)
-                        printf("\n\tYou are not allowed to use numbers in your name!\n\n\t");
+                        printf("\n\tYour name must contain only letters! Please try again: \n\n\t");
                     if (strcmp(login, "login") != 0)
                     printf("\n\tPlease write the word 'login' before your name and surname\n\n\t");
                     if (strcmp(login, "login") == 0 && is_word(first) == 1 && is_word(last) == 1) ok = 1;
@@ -57,12 +56,8 @@ int main()
                 }
                 break;
 
-            case 2:
-                Search(books, nr_books, file_name);
-                break;
-
             default:
-                printf("\n\tYou need to type in 0, 1 or 2.\n\n\t");
+                printf("\n\tYou need to type in 0 or 1.\n\n\t");
                 break;
             }
         } while(cont != 0 && cont != 1 && cont != 2);
