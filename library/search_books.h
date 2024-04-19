@@ -50,7 +50,7 @@ void Search(book *books, int n, char file_name[]){
         system("cls");
 
         for (int i=0; i<n; i++) {
-            if (strcmp(books[i].author,text)==0) {
+            if (strcmp(books[i].author, text1) == 0) {
                 printf("\t'%s' by %s, %d copies available\n", books[i].title, books[i].author, books[i].copies);
                 ok = 1;
             }
@@ -90,7 +90,7 @@ void Search(book *books, int n, char file_name[]){
     }
 
     if (!ok) {
-        printf("\n\tUnfortunately, we don't have any books by this author :(\n");
+        printf("\n\tUnfortunately, we don't have any books that match your criteria :(\n");
         Yellow();
         printf("\n\tPress 0 to go back to the menu.\n\n\t");
         White();
