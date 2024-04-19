@@ -76,6 +76,7 @@ int main()
                 break;
             case 3:
                 Donate(books, nr_books);
+                nr_books = Read_from_file(books, "library.csv");
                 break;
             case 4:
                 Loans(last);
