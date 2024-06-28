@@ -1,29 +1,18 @@
-#ifndef DONATE_BOOKS_H_INCLUDED
-#define DONATE_BOOKS_H_INCLUDED
+#include "library.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <string.h>
+#include <ctype.h>
 
 void Donate(book *books, int nr_books)
 {
     system("cls");
 
     int nr_donated, n;
-    char nr[10];
 
     printf("\n\tHow many books would you like to donate?\n\n\t");
-    scanf("%s", &nr);
-
-    if (is_word(nr)) {
-        printf("\n\tError. The number of books must be an integer! Please try again.\n");
-        Yellow();
-        printf("\n\tPress 0 to go back to the menu.\n\n\t");
-        scanf("%d", &n);
-        White();
-    }
-    else {
-        for (int i=0; i<strlen(nr); i++) {
-            int j = nr[i] - '0';
-            nr_donated = nr_donated*10 + j;
-        }
-    }
+    scanf("%d", &nr_donated);
 
     if (nr_donated == 0) return;
     printf("\n\tType in the title, the author and the number of copies of each book you'd like to donate, all separated by a newline:\n\n\t");
@@ -59,5 +48,3 @@ void Donate(book *books, int nr_books)
 
     free(donated);
 }
-
-#endif // DONATE_BOOKS_H_INCLUDED

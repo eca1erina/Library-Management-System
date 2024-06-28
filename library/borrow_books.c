@@ -1,5 +1,9 @@
-#ifndef BORROW_BOOKS_H_INCLUDED
-#define BORROW_BOOKS_H_INCLUDED
+#include "library.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <string.h>
+#include <ctype.h>
 
 void Borrow(book *books, int nr_books, char file_name[])
 {
@@ -13,10 +17,10 @@ void Borrow(book *books, int nr_books, char file_name[])
 
     if (is_word(nr)) {
         printf("\n\tError. The number of books must be an integer! Please try again.\n");
-        Yellow();
+        MakeTextYellow();
         printf("\n\tPress 0 to go back to the menu.\n\n\t");
         scanf("%d", &n);
-        White();
+        MakeTextWhite();
     }
     else {
         for (int i=0; i<strlen(nr); i++) {
@@ -93,13 +97,11 @@ void Borrow(book *books, int nr_books, char file_name[])
 
     Write_to_history_file(borrows, nr_borrowed, file_name);
 
-    Yellow();
+    MakeTextYellow();
     printf("\n\tPress 0 to go back to the menu\n\n\t");
-    White();
+    MakeTextWhite();
     scanf("%d", &n);
 
     free(loans);
     free(borrows);
 }
-
-#endif // BORROW_BOOKS_H_INCLUDED

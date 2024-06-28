@@ -1,5 +1,9 @@
-#ifndef LOANS_H_INCLUDED
-#define LOANS_H_INCLUDED
+#include "library.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <string.h>
+#include <ctype.h>
 
 void Loans(char file_name[])
 {
@@ -13,12 +17,10 @@ void Loans(char file_name[])
     for (int i=0; i<nr_loans; i++)
         printf("\t%d. '%s' by %s, %d copies\n",i, loans[i].title, loans[i].author, loans[i].copies);
 
-    Yellow();
+    MakeTextYellow();
     printf("\n\tPress 0 to go back to the menu.\n\n\t");
-    White();
+    MakeTextWhite();
     scanf("%d", &n);
 
     free(loans);
 }
-
-#endif // LOANS_H_INCLUDED

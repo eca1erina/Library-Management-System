@@ -1,11 +1,9 @@
-#ifndef FILE_OPERATIONS_H_INCLUDED
-#define FILE_OPERATIONS_H_INCLUDED
-
-typedef struct book {
-    char title[51];
-    char author[51];
-    int copies;
-} book;
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <string.h>
+#include <ctype.h>
+#include "library.h"
 
 int is_word(char s[])
 {
@@ -118,5 +116,3 @@ void Write_to_history_file(book *books, int nr_books, char username[])
 
     fclose(file);
 }
-
-#endif // FILE_OPERATIONS_H_INCLUDED

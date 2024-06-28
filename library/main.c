@@ -2,66 +2,42 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <string.h>
-#include "file_operations.h"
-#include "menu.h"
-#include "search_books.h"
-#include "return_books.h"
-#include "donate_books.h"
-#include "borrow_books.h"
-#include "loans.h"
+#include <ctype.h>
+#include "library.h"
 
 int cont=10, n=10; //variables to make the menu work
 char first[20], last[50], t[]=".csv", file_name[51], login[10]="";
 
-int main()
+int main(int argc, char* argv[])
 {
     FILE *account;
     int nr_books = 0;
     book *books = malloc(sizeof(book)*100);
     nr_books = Read_from_file(books, "library.csv");
 
-    printf("\n\tWelcome to our library!\n\n");
+    if (argc != 4) mainMenu();
 
-    while(cont != 0)
-    {
-        printf("\n\t1. Log in\n\n");
-        Yellow();
-        printf("\t0. Exit\n\n\t");
-        White();
-        do {
-            scanf("%d", &cont);
-            switch(cont) {
-            case 0:
-                break;
+    else {
+        int ok=0;
+        strcpy(login, argv[1]);
+        strcpy(first, argv[2]);
+        strcpy(last, argv[3]);
+        if (is_word(first) == 0 || is_word(last) == 0) {
+            printf("\n\tYour name must contain only letters! Please try again: \n\n\t");
+            return 1;
+        }
+        if (strcmp(login, "login") != 0) {
+            printf("\n\tPlease write the word 'login' before your name and surname\n\n\t");
+            return 1;
+        }
 
-            case 1:
-                system("cls");
-                printf("\n\tWrite your name and surname in the format 'login [NAME] [SURNAME]':\n\n\t");
-                int ok = 0;
-                while (!ok) {
-                    scanf("%s", &login);
-                    scanf("%s", &first);
-                    scanf("%s", &last);
-                    if (is_word(first) == 0 || is_word(last) == 0)
-                        printf("\n\tYour name must contain only letters! Please try again: \n\n\t");
-                    if (strcmp(login, "login") != 0)
-                    printf("\n\tPlease write the word 'login' before your name and surname\n\n\t");
-                    if (strcmp(login, "login") == 0 && is_word(first) == 1 && is_word(last) == 1) ok = 1;
-                    strcat(last, first);
-                    strcat(last, t);
-                    if (exists(last) == 0 && ok) {
-                        account = fopen(last, "w");
-                        fclose(account);
-                    }
-                }
-                break;
-
-            default:
-                printf("\n\tYou need to type in 0 or 1.\n\n\t");
-                break;
-            }
-        } while(cont != 0 && cont != 1 && cont != 2);
-
+        if (strcmp(login, "login") == 0 && is_word(first) == 1 && is_word(last) == 1) ok = 1;
+        strcat(last, first);
+        strcat(last, t);
+        if (exists(last) == 0 && ok) {
+            account = fopen(last, "w");
+            fclose(account);
+        }
         while(n != 0 && cont != 0)
         {
             Menu();
@@ -76,6 +52,7 @@ int main()
                 break;
             case 3:
                 Donate(books, nr_books);
+                nr_books = Read_from_file(books, "library.csv");
                 break;
             case 4:
                 Loans(last);
@@ -88,11 +65,7 @@ int main()
                 break;
             }
         }
-
-        if(n == 0) cont=0;
     }
-
-    free(books);
 
     return 0;
 }
